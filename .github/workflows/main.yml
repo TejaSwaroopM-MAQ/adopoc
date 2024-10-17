@@ -28,4 +28,6 @@ jobs:
         git pull --rebase --strategy-option=ours azure master
 
     - name: Force push changes to Azure DevOps
-      run: git push --force azure master
+      run: |
+        git reset --hard origin/master
+        git push --force azure master
