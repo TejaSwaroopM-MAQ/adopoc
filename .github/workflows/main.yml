@@ -27,5 +27,5 @@ jobs:
       run: |
         git pull --rebase --strategy-option=ours azure master
 
-    - name: Push changes to Azure DevOps
-      run: git push azure master
+    - name: Force push changes to Azure DevOps
+      run: git push --force azure master
