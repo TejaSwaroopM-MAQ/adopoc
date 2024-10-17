@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout GitHub repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch the full history to avoid shallow clone issues
 
     - name: Set up Git
       run: |
@@ -23,11 +25,7 @@ jobs:
         git remote add azure https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/POC/_git/POC
         git fetch azure
 
-    - name: Pull latest changes from Azure DevOps (auto resolve conflicts)
-      run: |
-        git pull --rebase --strategy-option=ours azure master
-
-    - name: Force push changes to Azure DevOps
+    - name: Force reset Azure DevOps branch to match GitHub
       run: |
         git reset --hard origin/master
         git push --force azure master
