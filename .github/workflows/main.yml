@@ -20,7 +20,7 @@ jobs:
 
     - name: Add Azure DevOps remote repository
       run: |
-        git remote add azure https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/Bootcamp/_git/Bootcamp
+        git remote add azure https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/POC/_git/POC
         git fetch azure
 
     - name: Pull latest changes from Azure DevOps (auto resolve conflicts)
