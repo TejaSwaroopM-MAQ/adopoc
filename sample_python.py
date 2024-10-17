@@ -10,6 +10,8 @@ def calculator(operation, a, b):
             return a / b
         else:
             return "Error: Division by zero"
+    elif operation == "power":
+        return a**b
     else:
         return "Error: Unsupported operation"
 
