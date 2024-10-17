@@ -22,8 +22,10 @@ jobs:
       run: |
         git remote add azure https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/Bootcamp/_git/Bootcamp
         git fetch azure
-    - name: Pull latest changes from Azure DevOps
-      run: git pull --rebase https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/Bootcamp/_git/Bootcamp master
+
+    - name: Pull latest changes from Azure DevOps (auto resolve conflicts)
+      run: |
+        git pull --rebase --strategy-option=ours azure master
 
     - name: Push changes to Azure DevOps
-      run: git push https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/Bootcamp/_git/Bootcamp master
+      run: git push azure master
