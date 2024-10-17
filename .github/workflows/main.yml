@@ -1,0 +1,29 @@
+name: Push to ADO Repo
+
+on:
+  push:
+    branches:
+      - master  # Change to the branch you want to trigger this action on
+
+jobs:
+  sync_ado:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout GitHub repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+
+    - name: Add Azure DevOps remote repository
+      run: |
+        git remote add azure https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/Bootcamp/_git/Bootcamp
+        git fetch azure
+    - name: Pull latest changes from Azure DevOps
+      run: git pull --rebase https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/Bootcamp/_git/Bootcamp master
+
+    - name: Push changes to Azure DevOps
+      run: git push https://mullamuris:${{ secrets.ADO_TOKEN }}@dev.azure.com/mullamuris/Bootcamp/_git/Bootcamp master
