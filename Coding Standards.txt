@@ -1,3 +1,5 @@
 1. The Code should not have any spelling mistakes
 2. The Code should not have any syntax errors
-3. Atleast one comment should be present for a function describing what it is trying to achieve
+3. Variable names and function names should be clear
+4. There should be at least one file that serves as a documentation for the code
+5. Atleast one comment should be present for a function describing what it is trying to achieve
