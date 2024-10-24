@@ -25,3 +25,4 @@ if __name__ == "__main__":
     print(calculator('divide', 5, 0))     # Output: Error: Division by zero
     print(calculator('modulus', 5, 3))    # Output: Error: Unsupported operation
     print(calculator('power', 3, 3))      # Output: 27
+    print(calculator('power', 3, 4))      # Output: 81
